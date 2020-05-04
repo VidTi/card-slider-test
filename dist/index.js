@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Card = _interopRequireDefault(require("./components/Card"));
 
+require("./css/slider.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -33,7 +35,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-// import './css/slider.css';
 var SliderTest = /*#__PURE__*/function (_React$Component) {
   _inherits(SliderTest, _React$Component);
 
@@ -70,7 +71,9 @@ var SliderTest = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var cards = this.state.cards;
-      return /*#__PURE__*/_react["default"].createElement("div", null, Object.keys(cards).map(function (key) {
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        "class": "cardContainer"
+      }, Object.keys(cards).map(function (key) {
         return /*#__PURE__*/_react["default"].createElement(_Card["default"], {
           key: key,
           cardTag: cards[key].card_tag,
