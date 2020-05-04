@@ -30,7 +30,12 @@ module.exports = {
 				// want! If you want to use CSS, you can change this next like's regex to
 				// /\.(css|scss)$/ or even just /\.css$/
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
+				loader: ['style-loader', 'css-loader'],
+        // test: /\.css$/,
+        // loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' 
+        // test: /\.css$/, 
+        // exclude: /node_modules/, 
+        // loader: ExtractTextPlugin.extract({ fallback: "style-loader", use: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]--[hash:base64:5]" })
 			},
     ]
   }

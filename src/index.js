@@ -1,6 +1,24 @@
 import React from "react";
-import './css/slider.css';
+// import './css/slider.css';
 import Card from './components/Card';
+import styled from 'styled-components'
+
+const CardContainer = styled.div`
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: scroll;
+  white-space: nowrap;
+  max-width: 680px;
+  text-align: left;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+
 class SliderTest extends React.Component {
    constructor(props) {
   	super(props);
@@ -24,7 +42,7 @@ class SliderTest extends React.Component {
 
   render () {
       const cards = this.state.cards;
-        return <div className="cardContainer">
+        return <CardContainer>
                 {Object.keys(cards).map((key) => <Card key={key} 
                                                        cardTag={cards[key].card_tag}
                                                        offerLabel={cards[key].offer_label}
@@ -39,7 +57,7 @@ class SliderTest extends React.Component {
                                                        progress={cards[key].progress}
                                                        />
                                                  )}
-                </div> 
+                </CardContainer> 
   }
 }
 

@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./css/slider.css");
-
 var _Card = _interopRequireDefault(require("./components/Card"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -34,6 +34,20 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  font-family: \"Proxima Nova\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  width: 100%;\n  margin: 0 auto;\n  overflow-x: scroll;\n  white-space: nowrap;\n  max-width: 680px;\n  text-align: left;\n  -ms-overflow-style: none;\n\n  &::-webkit-scrollbar {\n    display: none;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CardContainer = _styledComponents["default"].div(_templateObject());
 
 var SliderTest = /*#__PURE__*/function (_React$Component) {
   _inherits(SliderTest, _React$Component);
@@ -71,9 +85,7 @@ var SliderTest = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var cards = this.state.cards;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "cardContainer"
-      }, Object.keys(cards).map(function (key) {
+      return /*#__PURE__*/_react["default"].createElement(CardContainer, null, Object.keys(cards).map(function (key) {
         return /*#__PURE__*/_react["default"].createElement(_Card["default"], {
           key: key,
           cardTag: cards[key].card_tag,
