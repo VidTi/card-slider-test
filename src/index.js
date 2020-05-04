@@ -1,6 +1,6 @@
 import React from "react";
 import Card from './components/Card';
-import './css/slider.css';
+// import './css/slider.css';
 class SliderTest extends React.Component {
    constructor(props) {
   	super(props);
@@ -24,7 +24,7 @@ class SliderTest extends React.Component {
 
   render () {
       const cards = this.state.cards;
-        return <div className="cardContainer">
+        return <div>
                 {Object.keys(cards).map((key) => <Card key={key} 
                                                        cardTag={cards[key].card_tag}
                                                        offerLabel={cards[key].offer_label}
