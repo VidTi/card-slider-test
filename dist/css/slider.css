@@ -1,0 +1,17 @@
+.cardContainer {
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: scroll;
+  white-space: nowrap;
+  max-width: 680px;
+  text-align: left;
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.cardContainer {
+  -ms-overflow-style: none;
+}
