@@ -2,10 +2,11 @@
   "name": "card-slider-test",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist1/bundle.js",
   "scripts": {
     "build": "babel ./src --out-dir ./dist",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "buildwebpack": "webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,10 @@
     "@babel/preset-react": "^7.9.4",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "style-loader": "^1.2.1",
+    "webpack-cli": "^3.3.11"
   }
 }

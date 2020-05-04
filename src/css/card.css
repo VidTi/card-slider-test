@@ -1,0 +1,115 @@
+.card {
+    border-radius: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px 30px 20px 30px;
+    margin-left: 13px;
+    background-color: aqua;
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+
+.tag {
+    height: 20px;
+    width: 230px;
+    margin-left:0px;
+    margin-top: 10px;
+    background-color: blue;
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: #FFFFFF;
+    border-radius: 0px 35px 35px 0px;
+}
+
+.tag p{
+    margin:0;
+    margin-left: 55px;
+}
+
+.offerLabel {
+    font-size: 1.063rem;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.313rem;
+    margin-top: 27px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.offerDesc { 
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.813rem;
+    line-height: 1rem;
+    color: #6B6E7B;
+    margin-top: 10px;
+    white-space: normal;
+    height: 2rem;
+}
+
+.tnc {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.563rem;
+    line-height: 1.125rem;
+    color: #8F8F8F;
+    margin-top: 2px;
+}
+
+
+.conditionLimit {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    margin-top: 10px;
+    color: #4A4A4A;
+}
+
+.campaignEndDate{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    margin-top: 2px;
+    color: #8F8F8F;
+}
+
+.progressBar {
+    width: 233px;
+    height: 4px;
+    margin-top:8px;
+    background-color: #fff;
+}
+
+.progress {
+    height:100%;
+}
+
+.goalAchievement {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    margin-top:9px;
+    color: #000000;
+}
+
+.cta {
+    margin-top: 22px;
+    width: 120px;
+    height: 24px;
+    border-radius: 64px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    background-color: #fff;
+    text-align: center;
+    float: right;
+    color: #E95F62;
+}
