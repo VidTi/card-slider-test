@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Card = _interopRequireDefault(require("./components/Card"));
-
 require("./css/slider.css");
+
+var _Card = _interopRequireDefault(require("./components/Card"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -72,7 +72,7 @@ var SliderTest = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var cards = this.state.cards;
       return /*#__PURE__*/_react["default"].createElement("div", {
-        "class": "cardContainer"
+        className: "cardContainer"
       }, Object.keys(cards).map(function (key) {
         return /*#__PURE__*/_react["default"].createElement(_Card["default"], {
           key: key,
