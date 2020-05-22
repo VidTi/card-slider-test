@@ -35,20 +35,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  font-family: \"Proxima Nova\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  width: 100%;\n  margin: 0 auto;\n  overflow-x: scroll;\n  white-space: nowrap;\n  max-width: 680px;\n  text-align: left;\n  -ms-overflow-style: none;\n\n  &::-webkit-scrollbar {\n    display: none;\n  }\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var CardContainer = _styledComponents["default"].div(_templateObject());
-
 var SliderTest = /*#__PURE__*/function (_React$Component) {
   _inherits(SliderTest, _React$Component);
 
@@ -71,12 +57,28 @@ var SliderTest = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("http://demo9772522.mockable.io/").then(function (resp) {
-        resp.json().then(function (data) {
-          console.log(data);
+      fetch('http://localhost:8000/getData').then(function (resp) {
+        resp.text().then(function (textData) {
+          var data = JSON.parse(textData);
+          console.log("data", data);
 
           _this2.setState({
-            cards: data.cards
+            cards: {
+              body: data.bodyContent,
+              script: data.scriptContent,
+              style: data.styleContent
+            }
+          }, function () {
+            var scriptTag = document.createElement('script');
+            scriptTag.type = 'text/javascript';
+            scriptTag.async = true;
+            scriptTag.innerHTML = _this2.state.cards.script;
+            scriptTag.setAttribute("id", "offer-script");
+            document.body.appendChild(scriptTag);
+            var styles = document.createElement('style');
+            styles.type = 'text/css';
+            styles.appendChild(document.createTextNode(_this2.state.cards.style));
+            document.head.appendChild(styles);
           });
         });
       });
@@ -85,22 +87,12 @@ var SliderTest = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var cards = this.state.cards;
-      return /*#__PURE__*/_react["default"].createElement(CardContainer, null, Object.keys(cards).map(function (key) {
-        return /*#__PURE__*/_react["default"].createElement(_Card["default"], {
-          key: key,
-          cardTag: cards[key].card_tag,
-          offerLabel: cards[key].offer_label,
-          offerDesc: cards[key].offer_desc,
-          tnc: cards[key].tnc,
-          conditionLimit: cards[key].cond_limit,
-          campaignEndDate: cards[key].campaign_end_date,
-          goalAchievement: cards[key].goal_achievement,
-          cardColor: cards[key].card_bg,
-          cardTagColor: cards[key].card_tag_bg,
-          progressBarColor: cards[key].progress_bar_bg,
-          progress: cards[key].progress
-        });
-      }));
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "slider",
+        dangerouslySetInnerHTML: {
+          __html: this.state.cards.body
+        }
+      });
     }
   }]);
 
