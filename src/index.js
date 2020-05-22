@@ -3,20 +3,20 @@ import React from "react";
 import Card from './components/Card';
 import styled from 'styled-components'
 
-const CardContainer = styled.div`
-  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  width: 100%;
-  margin: 0 auto;
-  overflow-x: scroll;
-  white-space: nowrap;
-  max-width: 680px;
-  text-align: left;
-  -ms-overflow-style: none;
+// const CardContainer = styled.div`
+//   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   width: 100%;
+//   margin: 0 auto;
+//   overflow-x: scroll;
+//   white-space: nowrap;
+//   max-width: 680px;
+//   text-align: left;
+//   -ms-overflow-style: none;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// `;
 
 
 class SliderTest extends React.Component {
@@ -24,40 +24,63 @@ class SliderTest extends React.Component {
   	super(props);
     this.state = {
         cards: {}
-    }
+    };
    }
 
-   componentDidMount() {
-      fetch(`http://demo9772522.mockable.io/`)
+  componentDidMount() {
+      fetch('http://localhost:8000/getData')
       .then( (resp) => {
-          resp.json().then( (data) => {
-              console.log(data);
+          resp.text().then((textData) => {
+            let data = JSON.parse(textData) ;
+              console.log("data", data);
               this.setState({
-                  cards: data.cards
+                  cards: {body: data.bodyContent, script: data.scriptContent, style: data.styleContent}
+              },
+              () => {
+                let scriptTag = document.createElement('script');
+                scriptTag.type = 'text/javascript';
+                scriptTag.async = true;
+                scriptTag.innerHTML = this.state.cards.script;
+                scriptTag.setAttribute("id", "offer-script");
+                document.body.appendChild(scriptTag);
+
+                let styles = document.createElement('style');
+                styles.type = 'text/css';
+                styles.appendChild(document.createTextNode(this.state.cards.style));
+                document.head.appendChild(styles);
+
               });
           });
       });
    }
-   
 
+  // handleCardClick = () => (event) => {
+  //   console.log("In card click!")
+  //   console.log("event ", event);
+  // }
+
+  handleCardClick(event) {
+    console.log("In card click!")
+    console.log("event ", event);
+  }
+
+  handleTestClick = () => (e) => {
+    console.log("event ", e.target);
+  }
+
+  
   render () {
       const cards = this.state.cards;
-        return <CardContainer>
-                {Object.keys(cards).map((key) => <Card key={key} 
-                                                       cardTag={cards[key].card_tag}
-                                                       offerLabel={cards[key].offer_label}
-                                                       offerDesc={cards[key].offer_desc}
-                                                       tnc={cards[key].tnc}
-                                                       conditionLimit={cards[key].cond_limit}
-                                                       campaignEndDate={cards[key].campaign_end_date}
-                                                       goalAchievement={cards[key].goal_achievement}
-                                                       cardColor={cards[key].card_bg}
-                                                       cardTagColor={cards[key].card_tag_bg}
-                                                       progressBarColor={cards[key].progress_bar_bg}
-                                                       progress={cards[key].progress}
-                                                       />
-                                                 )}
-                </CardContainer> 
+      return <div className="slider" dangerouslySetInnerHTML={{__html: this.state.cards.body}}></div>
+        // return <div className="abc">
+        //   <CardContainer dangerouslySetInnerHTML={{__html: this.state.cards.body}}></CardContainer>
+        // </div>
+        // return <div> 
+        //   <div className="abc" dangerouslySetInnerHTML={{__html: this.state.cards.body}}></div>
+        //   <div onClick={this.handleTestClick()}>abcdef</div>
+        //   <div dangerouslySetInnerHTML={this.createMarkup()} />
+        // </div>
+       
   }
 }
 
